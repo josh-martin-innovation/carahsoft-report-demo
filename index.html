@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+    This code is the intellectual property of Martin Innovation.
+    Any unauthorized use, reproduction, or distribution is prohibited.
+    © 2025 Martin Innovation. All Rights Reserved.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carahsoft Activity Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        /* Custom styles for the form layout */
+        .grid-col-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .input-group label {
+            font-weight: 600;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            background-color: white;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+
+        .section-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+
+        .logo-text {
+            color: #1f2937;
+        }
+
+        .logo-highlight {
+            color: #3b82f6;
+        }
+
+        /* Styles to hide form controls when printing */
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            #report-container {
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .input-group input,
+            .input-group textarea,
+            button,
+            .section-header,
+            .text-sm {
+                display: none;
+            }
+
+            .grid-cols-1,
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4 {
+                display: block;
+                /* Ensure report content is visible */
+            }
+
+            .logo-text,
+            .logo-highlight,
+            h2,
+            hr {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-4 sm:p-8 md:p-12">
+
+    <div id="report-container" class="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-12 rounded-2xl shadow-xl space-y-8">
+
+        <!-- NEW HEADER SECTION -->
+        <div class="bg-blue-600 text-white p-6 rounded-t-2xl flex items-center justify-between">
+            <h1 class="font-semibold text-5xl">carahsoft</h1>
+            <div class="text-gray-300 text-right">
+                <p class="font-bold text-xl">The Trusted Government</p>
+                <p class="font-bold text-xl">'IT Solutions Provider*'</p>
+            </div>
+        </div>
+        <!-- END NEW HEADER SECTION -->
+
+        <!-- Report Details Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            <div class="input-group">
+                <label for="consulting-firm">Consulting Firm</label>
+                <input type="text" id="consulting-firm" value="Martin Innovation"
+                    class="rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="input-group">
+                <label for="consultant-name">Consultant Name</label>
+                <input type="text" id="consultant-name" value="Josh Martin"
+                    class="rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="input-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="Enter Address"
+                    class="rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="input-group">
+                <label for="report-date">Report Date</label>
+                <input type="date" id="report-date"
+                    class="rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="input-group">
+                <label for="client-name">Client Name</label>
+                <input type="text" id="client-name" value="Informatica (via Carahsoft)"
+                    class="rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="input-group">
+                <label for="time-period">Time Period</label>
+                <input type="text" id="time-period" placeholder="e.g., August 2025"
+                    class="rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+        </div>
+
+        <!-- Completed Objectives Section -->
+        <div class="space-y-4">
+            <h3 class="section-header">Completed Objectives & Activities</h3>
+            <p class="text-sm text-gray-600">Please list all projects, tasks, and objectives that have been completed this
+                period, along with a brief summary.</p>
+            <div id="completed-objectives">
+                <div
+                    class="relative grid grid-cols-1 md:grid-cols-3 gap-4 border p-4 rounded-lg bg-gray-50 mb-4 completed-row">
+                    <button type="button" onclick="removeRow(this)"
+                        class="absolute top-2 right-2 p-1 text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 112 0v6a1 1 0 11-2 0V8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="col-span-1 md:col-span-3 input-group">
+                        <label>Activity/Project</label>
+                        <input type="text" class="activity-input" placeholder="e.g., QBR Preparation">
+                    </div>
+                    <div class="col-span-1 md:col-span-3 input-group">
+                        <label>Summary</label>
+                        <textarea rows="3" class="summary-textarea"
+                            placeholder="e.g., Prepared a draft for the Q3 Business Review, focusing on key account performance and strategic recommendations."></textarea>
+                    </div>
+                </div>
+            </div>
+            <button id="add-completed-row"
+                class="w-full px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                + Add Another Completed Activity
+            </button>
+        </div>
+
+        <!-- Upcoming Objectives Section -->
+        <div class="space-y-4">
+            <h3 class="section-header">Upcoming & Ongoing Objectives</h3>
+            <p class="text-sm text-gray-600">Please list any projects, tasks, or objectives that are currently in progress
+                or planned for the next period.</p>
+            <div id="upcoming-objectives">
+                <div
+                    class="relative grid grid-cols-1 md:grid-cols-4 gap-4 border p-4 rounded-lg bg-gray-50 mb-4 upcoming-row">
+                    <button type="button" onclick="removeRow(this)"
+                        class="absolute top-2 right-2 p-1 text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 112 0v6a1 1 0 11-2 0V8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="col-span-1 md:col-span-2 input-group">
+                        <label>Activity/Project</label>
+                        <input type="text" class="activity-input" placeholder="e.g., Refine Go-to-Market Strategy">
+                    </div>
+                    <div class="col-span-1 md:col-span-1 input-group">
+                        <label>Hours/Milestones</label>
+                        <input type="text" class="hours-input" placeholder="e.g., 20 hrs or Phase 1 Complete">
+                    </div>
+                    <div class="col-span-1 md:col-span-1 input-group">
+                        <label>Due Date</label>
+                        <input type="date" class="due-date-input">
+                    </div>
+                    <div class="col-span-1 md:col-span-4 input-group">
+                        <label>Notes</label>
+                        <textarea rows="2" class="notes-textarea"
+                            placeholder="e.g., Focusing on integrating partner feedback and market analysis results."></textarea>
+                    </div>
+                </div>
+            </div>
+            <button id="add-upcoming-row"
+                class="w-full px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                + Add Another Upcoming Activity
+            </button>
+        </div>
+
+        <!-- Meetings Section -->
+        <div class="space-y-4">
+            <h3 class="section-header">Meetings</h3>
+            <p class="text-sm text-gray-600">List any meetings attended or hosted related to this engagement.</p>
+            <div id="meetings">
+                <div
+                    class="relative grid grid-cols-1 md:grid-cols-4 gap-4 border p-4 rounded-lg bg-gray-50 mb-4 meeting-row">
+                    <button type="button" onclick="removeRow(this)"
+                        class="absolute top-2 right-2 p-1 text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 112 0v6a1 1 0 11-2 0V8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="col-span-1 md:col-span-2 input-group">
+                        <label>Attendees</label>
+                        <input type="text" class="attendees-input" placeholder="e.g., J. Martin, M. Anderson, E. Savage">
+                    </div>
+                    <div class="col-span-1 md:col-span-2 input-group">
+                        <label>Date</label>
+                        <input type="date" class="date-input">
+                    </div>
+                    <div class="col-span-1 md:col-span-4 input-group">
+                        <label>Main Objective & Outcome</label>
+                        <textarea rows="2" class="outcome-textarea"
+                            placeholder="e.g., Discussed Q3 goals and prioritized key accounts. Outcome: Created a shared plan with next steps."></textarea>
+                    </div>
+                </div>
+            </div>
+            <button id="add-meeting-row"
+                class="w-full px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                + Add Another Meeting
+            </button>
+        </div>
+
+        <!-- Conclusions/Recommendations Section -->
+        <div class="space-y-4">
+            <h3 class="section-header">Conclusions & Recommendations</h3>
+            <p class="text-sm text-gray-600">Please provide any additional information, such as issues, concerns, or success
+                stories.</p>
+            <div class="input-group">
+                <textarea id="conclusions" rows="5"
+                    placeholder="e.g., We successfully identified three key pursuit opportunities for Q4. I recommend we allocate additional time to competitive analysis for these deals."></textarea>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div
+            class="flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <button id="clear-button"
+                class="w-full sm:w-auto flex items-center justify-center space-x-2 px-6 py-2 text-sm font-semibold text-red-600 bg-red-100 rounded-lg shadow-md hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors">
+                <span>Clear Report</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Copyright notice moved to the bottom -->
+    <div class="text-center text-sm text-gray-500 mt-6">
+        © 2025 Martin Innovation. All Rights Reserved.
+    </div>
+
+    <!-- JavaScript for adding rows, saving/loading content, and copying content -->
+    <script>
+        const STORAGE_KEY = 'activityReportData';
+
+        // Utility function to get form data
+        function getFormData() {
+            const data = {};
+            data.consultingFirm = document.getElementById('consulting-firm').value;
+            data.consultantName = document.getElementById('consultant-name').value;
+            data.address = document.getElementById('address').value;
+            data.reportDate = document.getElementById('report-date').value;
+            data.clientName = document.getElementById('client-name').value;
+            data.timePeriod = document.getElementById('time-period').value;
+            data.conclusions = document.getElementById('conclusions').value;
+
+            data.completed = [];
+            document.querySelectorAll('#completed-objectives .completed-row').forEach(row => {
+                data.completed.push({
+                    activity: row.querySelector('.activity-input').value,
+                    summary: row.querySelector('.summary-textarea').value
+                });
+            });
+
+            data.upcoming = [];
+            document.querySelectorAll('#upcoming-objectives .upcoming-row').forEach(row => {
+                data.upcoming.push({
+                    activity: row.querySelector('.activity-input').value,
+                    hours: row.querySelector('.hours-input').value,
+                    dueDate: row.querySelector('.due-date-input').value,
+                    notes: row.querySelector('.notes-textarea').value
+                });
+            });
+
+            data.meetings = [];
+            document.querySelectorAll('#meetings .meeting-row').forEach(row => {
+                data.meetings.push({
+                    attendees: row.querySelector('.attendees-input').value,
+                    date: row.querySelector('.date-input').value,
+                    outcome: row.querySelector('.outcome-textarea').value
+                });
+            });
+
+            return data;
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            const data = getFormData();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        // Load data from localStorage and populate the form
+        function loadData() {
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (!savedData) return;
+
+            const data = JSON.parse(savedData);
+
+            document.getElementById('consulting-firm').value = data.consultingFirm || '';
+            document.getElementById('consultant-name').value = data.consultantName || '';
+            document.getElementById('address').value = data.address || '';
+            document.getElementById('report-date').value = data.reportDate || '';
+            document.getElementById('client-name').value = data.clientName || '';
+            document.getElementById('time-period').value = data.timePeriod || '';
+            document.getElementById('conclusions').value = data.conclusions || '';
+
+            // Clear existing rows before loading
+            document.getElementById('completed-objectives').innerHTML = '';
+            document.getElementById('upcoming-objectives').innerHTML = '';
+            document.getElementById('meetings').innerHTML = '';
+
+            if (data.completed && data.completed.length > 0) {
+                data.completed.forEach(item => {
+                    addRow('completed-objectives', createCompletedRowHtml(item));
+                });
+            } else {
+                addRow('completed-objectives', createCompletedRowHtml({}));
+            }
+
+            if (data.upcoming && data.upcoming.length > 0) {
+                data.upcoming.forEach(item => {
+                    addRow('upcoming-objectives', createUpcomingRowHtml(item));
+                });
+            } else {
+                addRow('upcoming-objectives', createUpcomingRowHtml({}));
+            }
+
+            if (data.meetings && data.meetings.length > 0) {
+                data.meetings.forEach(item => {
+                    addRow('meetings', createMeetingRowHtml(item));
+                });
+            } else {
+                addRow('meetings', createMeetingRowHtml({}));
+            }
+        }
+
+        // Add a new row for completed objectives
+        function createCompletedRowHtml(item = {}) {
+            return `
+                <div class="relative grid grid-cols-1 md:grid-cols-3 gap-4 border p-4 rounded-lg bg-gray-50 mb-4 completed-row">
+                    <button type="button" onclick="removeRow(this)"
+                        class="absolute top-2 right-2 p-1 text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 112 0v6a1 1 0 11-2 0V8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="col-span-1 md:col-span-3 input-group">
+                        <label>Activity/Project</label>
+                        <input type="text" class="activity-input rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="${item.activity || ''}" placeholder="e.g., QBR Preparation">
+                    </div>
+                    <div class="col-span-1 md:col-span-3 input-group">
+                        <label>Summary</label>
+                        <textarea rows="3" class="summary-textarea rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Prepared a draft for the Q3 Business Review...">${item.summary || ''}</textarea>
+                    </div>
+                </div>`;
+        }
+
+        // Add a new row for upcoming objectives
+        function createUpcomingRowHtml(item = {}) {
+            return `
+                <div class="relative grid grid-cols-1 md:grid-cols-4 gap-4 border p-4 rounded-lg bg-gray-50 mb-4 upcoming-row">
+                    <button type="button" onclick="removeRow(this)"
+                        class="absolute top-2 right-2 p-1 text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 112 0v6a1 1 0 11-2 0V8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="col-span-1 md:col-span-2 input-group">
+                        <label>Activity/Project</label>
+                        <input type="text" class="activity-input rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="${item.activity || ''}" placeholder="e.g., Refine Go-to-Market Strategy">
+                    </div>
+                    <div class="col-span-1 md:col-span-1 input-group">
+                        <label>Hours/Milestones</label>
+                        <input type="text" class="hours-input rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="${item.hours || ''}" placeholder="e.g., 20 hrs or Phase 1 Complete">
+                    </div>
+                    <div class="col-span-1 md:col-span-1 input-group">
+                        <label>Due Date</label>
+                        <input type="date" class="due-date-input rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="${item.dueDate || ''}">
+                    </div>
+                    <div class="col-span-1 md:col-span-4 input-group">
+                        <label>Notes</label>
+                        <textarea rows="2" class="notes-textarea rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Focusing on integrating partner feedback...">${item.notes || ''}</textarea>
+                    </div>
+                </div>`;
+        }
+
+        // Add a new row for meetings
+        function createMeetingRowHtml(item = {}) {
+            return `
+                <div class="relative grid grid-cols-1 md:grid-cols-4 gap-4 border p-4 rounded-lg bg-gray-50 mb-4 meeting-row">
+                    <button type="button" onclick="removeRow(this)"
+                        class="absolute top-2 right-2 p-1 text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 112 0v6a1 1 0 11-2 0V8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="col-span-1 md:col-span-2 input-group">
+                        <label>Attendees</label>
+                        <input type="text" class="attendees-input rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="${item.attendees || ''}" placeholder="e.g., J. Martin, M. Anderson, E. Savage">
+                    </div>
+                    <div class="col-span-1 md:col-span-2 input-group">
+                        <label>Date</label>
+                        <input type="date" class="date-input rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="${item.date || ''}">
+                    </div>
+                    <div class="col-span-1 md:col-span-4 input-group">
+                        <label>Main Objective & Outcome</label>
+                        <textarea rows="2" class="outcome-textarea rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Discussed Q3 goals...">${item.outcome || ''}</textarea>
+                    </div>
+                </div>`;
+        }
+        
+        // Function to create new rows and save
+        function addRow(containerId, templateHtml) {
+            const container = document.getElementById(containerId);
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = templateHtml;
+            container.appendChild(tempDiv.firstElementChild); // Append the actual element, not the div wrapper
+            addInputListeners(); // Re-add listeners to all inputs, including the new one
+            saveData(); // Save the new structure
+        }
+
+        // Add event listeners for each "add row" button
+        document.getElementById('add-completed-row').addEventListener('click', () => {
+            addRow('completed-objectives', createCompletedRowHtml());
+        });
+
+        document.getElementById('add-upcoming-row').addEventListener('click', () => {
+            addRow('upcoming-objectives', createUpcomingRowHtml());
+        });
+
+        document.getElementById('add-meeting-row').addEventListener('click', () => {
+            addRow('meetings', createMeetingRowHtml());
+        });
+        
+        // Function to remove a row
+        function removeRow(button) {
+            const row = button.closest('.completed-row, .upcoming-row, .meeting-row');
+            if (row) {
+                row.remove();
+                saveData();
+            }
+        }
+        
+        // Function to handle saving on input change (event delegation)
+        function addInputListeners() {
+            document.querySelectorAll('input, textarea').forEach(element => {
+                element.addEventListener('input', saveData);
+            });
+        }
+        
+        // Function to clear data and reload the page
+        document.getElementById('clear-button').addEventListener('click', () => {
+            localStorage.removeItem(STORAGE_KEY);
+            window.location.reload();
+        });
+
+        // Initial load of data
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            addInputListeners();
+        });
+    </script>
+</body>
+
+</html>
